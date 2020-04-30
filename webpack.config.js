@@ -6,15 +6,16 @@ console.log(entries)
 
 module.exports = {
   mode: "development",
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map', // 开放环境用，可以看到报错信息准确的排数
   entry: entries,
   devServer: {
-    port: 9000,
-    quiet: false,
-    inline: true,
-    stats: "errors-only",
-    overlay: false,
-    compress: true
+    port: '9000', //默认是8080
+    quiet: false, //默认不启用
+    inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
+    stats: "errors-only", //终端仅打印 error
+    overlay: false, //默认不启用
+    clientLogLevel: "silent", //日志等级
+    compress: true //是否启用 gzip 压缩
   },
   module: {
     rules: [
@@ -24,17 +25,26 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        /**
+         * style-loader 动态创建 style 标签，将 css 插入到 head 中.
+            css-loader 负责处理 @import 等语句。
+            postcss-loader 和 autoprefixer，自动生成浏览器兼容性前缀 —— 2020了，应该没人去自己徒手去写浏览器前缀了吧
+            less-loader 负责处理编译 .less 文件,将其转为 css
+            loader 的执行顺序是从右向左执行的，也就是后面的 loader 先执行，上面 loader 的执行顺序为: less-loader ---> postcss-loader ---> css-loader ---> style-loader
+         */
         test: /\.(le|c)ss$/,
         use: ['style-loader', 'css-loader', {
           loader: 'postcss-loader',
           options: {
             plugins: function() {
-              require('autoprefixer')({
-                "overrideBrowserslist": [
-                  ">0.25%",
-                  "not dead"
-                ]
-              })
+              return [
+                require('autoprefixer')({
+                  "overrideBrowserslist": [
+                    ">0.25%",
+                    "not dead"
+                  ]
+                })
+              ]
             }
           }
         }, 'less-loader'],
@@ -44,7 +54,7 @@ module.exports = {
         test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
               limit: 10240,
               esModule: false,
