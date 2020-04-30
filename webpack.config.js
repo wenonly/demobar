@@ -1,13 +1,18 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const glob = require('glob');
 
 const entries = getEntries('src/**/index.js');
-console.log(entries)
+const mode = process.env.NODE_ENV || "development";
 
 module.exports = {
-  mode: "development",
+  mode: mode,
   devtool: 'cheap-module-eval-source-map', // 开放环境用，可以看到报错信息准确的排数
   entry: entries,
+  output: {
+    filename: '[name].js',
+    path: __dirname + '/dist'
+  },
   devServer: {
     port: '9000', //默认是8080
     quiet: false, //默认不启用
@@ -36,7 +41,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', {
           loader: 'postcss-loader',
           options: {
-            plugins: function() {
+            plugins: function () {
               return [
                 require('autoprefixer')({
                   "overrideBrowserslist": [
@@ -54,20 +59,25 @@ module.exports = {
         test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              limit: 10240,
+              limit: 10240, //10K
               esModule: false,
               name: '[name]_[hash:6].[ext]',
-              outputPath: 'assets/img',
+              outputPath: 'assets/img'
             }
           }
         ],
         exclude: /node_modules/
+      },
+      {
+          test: /.html$/,
+          use: 'html-withimg-loader'
       }
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     ...Object.keys(entries).map(name => {
       return new HtmlWebpackPlugin({
         template: entries[name].replace('/index.js', '') + '/index.html',
@@ -86,10 +96,10 @@ module.exports = {
 function getEntries(globPath) {
   const files = glob.sync(globPath);
   const entries = {};
-  files.forEach(function(filepath) {
-      const split = filepath.split('/');
-      const name = split[split.length - 2];
-      entries[name] = './' + filepath;
+  files.forEach(function (filepath) {
+    const split = filepath.split('/');
+    const name = split[split.length - 2];
+    entries[name] = './' + filepath;
   });
   return entries;
- }
+}
