@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const MiniCssExtract = require('mini-css-extract-plugin') // 引入插件
 const glob = require('glob');
+const path = require('path');
 
 const entries = getEntries('src/**/index.js');
 const mode = process.env.NODE_ENV || "development";
@@ -10,8 +13,9 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map', // 开放环境用，可以看到报错信息准确的排数
   entry: entries,
   output: {
-    filename: '[name].js',
-    path: __dirname + '/dist'
+    filename: '[name]/[name].js',
+    path: __dirname + '/dist',
+    // publicPath: '/',
   },
   devServer: {
     port: '9000', //默认是8080
@@ -61,10 +65,10 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10240, //10K
+              limit: 10, //10K
               esModule: false,
-              name: '[name]_[hash:6].[ext]',
-              outputPath: 'assets/img'
+              name: '/img/[name]_[hash:6].[ext]',
+              // outputPath: '/assets/img'
             }
           }
         ],
@@ -72,7 +76,7 @@ module.exports = {
       },
       {
           test: /.html$/,
-          use: 'html-withimg-loader'
+          use: ['html-withimg-loader']
       }
     ]
   },
@@ -81,13 +85,22 @@ module.exports = {
     ...Object.keys(entries).map(name => {
       return new HtmlWebpackPlugin({
         template: entries[name].replace('/index.js', '') + '/index.html',
-        filename: name + '.html',
+        filename: name + '/index.html',
         minify: {
           removeAttributeQuotes: false,
           collapseWhitespace: false,
         },
         chunks: [name],
       })
+    }),
+    ...Object.keys(entries).map(name => {
+      return new CopyWebpackPlugin([
+        {
+          from: 'src/' + name + '/static/*',
+          to: path.resolve(__dirname, 'dist', name, 'static'),
+          flatten: true,
+        }
+      ])
     })
   ]
 }

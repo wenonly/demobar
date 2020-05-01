@@ -9,5 +9,3 @@ class Animal {
 
 const dog = new Animal('dog')
 console.log('hahhahahhhahhhahh')
-
-import './index.less'
