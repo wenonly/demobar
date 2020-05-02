@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 后台大布局 - Layui</title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="./public/jquery-3.5.0.min.js"></script>
+  <link rel="stylesheet" href="./public/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  @require('./header.ejs')
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <!-- <li class="layui-nav-item">
+          <a href="javascript:;">解决方案</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="">超链接</a></dd>
+          </dl>
+        </li> -->
+        <% for (var name in entries) { %>
+          <li class="layui-nav-item"><a href="/<%= name %>/index.html"><%= name %></a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div id="main-body-wrap" style="padding: 15px;">内容主体区域</div>
+  </div>
+  
+  @require('./footer.ejs')
+</div>
+<script src="./public/layui.js"></script>
+<script>
+  $(document).ready(function() {
+    $(".layui-nav-item a").click(function(e){
+      const href = $(this).attr("href")
+      $('#main-body-wrap').load(href);
+      e.preventDefault();
+    });
+  })
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+});
+</script>
+</body>
+</html>
