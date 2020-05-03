@@ -69,7 +69,7 @@ module.exports = {
             options: {
               limit: 10, //10K
               esModule: false,
-              name: "/public/assetsimg/[name]_[hash:6].[ext]",
+              name: "/img/[name]_[hash:6].[ext]",
               // outputPath: '/assets/img'
             },
           },

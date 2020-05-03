@@ -17,6 +17,7 @@ webpack 4.43.0
 - css相关loader style-loader css-loader postcss-loader autoprefixer less-loader
 - clean-webpack-plugin 每次打包前清空dist目录
 - copy-webpack-plugin copy静态文件目录
+- underscore-template-loader 处理ejs文件中的引入
 
 
 
