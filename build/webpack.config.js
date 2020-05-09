@@ -4,12 +4,32 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const MiniCssExtract = require('mini-css-extract-plugin') // 引入插件
 const glob = require("glob");
 const path = require("path");
+const pinyin = require("pinyin");
+const pinyinConfig = { style: pinyin.STYLE_NORMAL }
 
-const entries = getEntries("src/*/main.json");
-for (let name in entries) {
-  console.log(require(entries[name]))
+// 获取所有的入口configs
+const entrieConfigs = getEntries("src/*/config.json");
+const entries = {} // 用于记录入口js
+const pagesConfig = [] // 记录所有页面的配置信息和结构
+console.log(entrieConfigs)
+for (let key in entrieConfigs) {
+  // 每一个目录的配置信息，包含入口信息
+  const config = require(entrieConfigs[key])
+  pagesConfig[key] = []
+
+  const paths = config.path
+  for (let pathNode of paths) {
+    const src = path.join(__dirname, '../src', key, pathNode.src, 'index.js')
+    const name = getName(src)
+    console.log(src)
+    entries[name] = src
+    pagesConfig[key].push(Object.assign(pathNode, {
+      path: '/' + name,
+      type: key 
+    }))
+  }
 }
-console.log(entries)
+console.log(pagesConfig)
 const mode = process.env.NODE_ENV || "development";
 
 module.exports = {
@@ -18,7 +38,7 @@ module.exports = {
   entry: entries,
   output: {
     filename: "[name]/[name].js",
-    path: __dirname + "/dist",
+    path: path.join(__dirname, '../dist'),
     publicPath: '/',
   },
   devServer: {
@@ -38,13 +58,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        /**
-         * style-loader 动态创建 style 标签，将 css 插入到 head 中.
-            css-loader 负责处理 @import 等语句。
-            postcss-loader 和 autoprefixer，自动生成浏览器兼容性前缀 —— 2020了，应该没人去自己徒手去写浏览器前缀了吧
-            less-loader 负责处理编译 .less 文件,将其转为 css
-            loader 的执行顺序是从右向左执行的，也就是后面的 loader 先执行，上面 loader 的执行顺序为: less-loader ---> postcss-loader ---> css-loader ---> style-loader
-         */
         test: /\.(le|c)ss$/,
         use: [
           "style-loader",
@@ -73,8 +86,11 @@ module.exports = {
             options: {
               limit: 10, //10K
               esModule: false,
-              name: "[name]_[hash:6].[ext]",
-              outputPath: 'static/img'
+              name: "[hash:6].[ext]",
+              outputPath: (url, resourcePath) => {
+                const pathName = getName(resourcePath)
+                return `${pathName}/${url}`;
+              },
             },
           },
         ],
@@ -94,7 +110,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     ...Object.keys(entries).map((name) => {
       return new HtmlWebpackPlugin({
-        template: entries[name].replace("/index.js", "") + "/index.html",
+        template: entries[name].slice(0, -8) + "index.html",
         filename: name + "/index.html",
         minify: {
           removeAttributeQuotes: false,
@@ -117,19 +133,10 @@ module.exports = {
       },
       chunks: ["index"],
     }),
-    // ...Object.keys(entries).map((name) => {
-    //   return new CopyWebpackPlugin([
-    //     {
-    //       from: "src/" + name + "/static/*",
-    //       to: path.resolve(__dirname, "dist", name, "static"),
-    //       flatten: true,
-    //     },
-    //   ]);
-    // }),
     new CopyWebpackPlugin([
       {
-        from: "template/public",
-        to: path.resolve(__dirname, "dist", "public"),
+        from: "template/static",
+        to: path.resolve(__dirname, "../dist", "static"),
         flatten: false,
       },
     ]),
@@ -143,7 +150,14 @@ function getEntries(globPath) {
   files.forEach(function (filepath) {
     const split = filepath.split("/");
     const name = split[split.length - 2];
-    entries[name] = "./" + filepath;
+    entries[name] = "../" + filepath;
   });
   return entries;
+}
+
+
+// 根据路径生成文件名
+function getName(path) {
+  const pathArr = path.split('src')[1].split('\\')
+  return pinyin(pathArr[1], pinyinConfig).join('') + '_' + pinyin(pathArr[2], pinyinConfig).join('')
 }

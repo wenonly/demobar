@@ -1,5 +1,5 @@
 {
-  "main": [
+  "path": [
     {
       "title": "这是demo1",
       "src": "./demo1"

@@ -20,6 +20,7 @@
     "html-withimg-loader": "^0.1.16",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
+    "pinyin": "^2.9.1",
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.2.0",
     "underscore-template-loader": "^1.0.0",
@@ -29,7 +30,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"
   }
 }
