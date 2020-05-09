@@ -6,10 +6,17 @@
   <title>Document</title>
 </head>
 <body>
-  <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-    <% for (var name in entries) { %>
-      <li class="layui-nav-item"><a href="/<%= name %>"><%= name %></a></li>
-    <% } %>
+  <ul>
+    <% for (var name in pagesConfig) {
+      %><ul><%
+      for (var page of pagesConfig[name].pages) {
+        %>
+        <li><a href="<%= page.path %>"><%= page.title %></a></li>
+        <%
+      }
+      %></ul><%
+    }%>
+
   </ul>
 </body>
 </html>

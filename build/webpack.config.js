@@ -2,34 +2,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const MiniCssExtract = require('mini-css-extract-plugin') // 引入插件
-const glob = require("glob");
+
 const path = require("path");
-const pinyin = require("pinyin");
-const pinyinConfig = { style: pinyin.STYLE_NORMAL }
+const {getEntries, getName, getPageConfigs} = require("./utils")
 
 // 获取所有的入口configs
 const entrieConfigs = getEntries("src/*/config.json");
-const entries = {} // 用于记录入口js
-const pagesConfig = [] // 记录所有页面的配置信息和结构
-console.log(entrieConfigs)
-for (let key in entrieConfigs) {
-  // 每一个目录的配置信息，包含入口信息
-  const config = require(entrieConfigs[key])
-  pagesConfig[key] = []
-
-  const paths = config.path
-  for (let pathNode of paths) {
-    const src = path.join(__dirname, '../src', key, pathNode.src, 'index.js')
-    const name = getName(src)
-    console.log(src)
-    entries[name] = src
-    pagesConfig[key].push(Object.assign(pathNode, {
-      path: '/' + name,
-      type: key 
-    }))
-  }
-}
+const { pagesConfig, entries } = getPageConfigs(entrieConfigs)
 console.log(pagesConfig)
+
+
 const mode = process.env.NODE_ENV || "development";
 
 module.exports = {
@@ -129,7 +111,7 @@ module.exports = {
       },
       title: "DEMOBAR",
       templateParameters: {
-        entries: entries,
+        pagesConfig: pagesConfig,
       },
       chunks: ["index"],
     }),
@@ -142,22 +124,3 @@ module.exports = {
     ]),
   ],
 };
-
-// 获取指定路径下的入口文件
-function getEntries(globPath) {
-  const files = glob.sync(globPath);
-  const entries = {};
-  files.forEach(function (filepath) {
-    const split = filepath.split("/");
-    const name = split[split.length - 2];
-    entries[name] = "../" + filepath;
-  });
-  return entries;
-}
-
-
-// 根据路径生成文件名
-function getName(path) {
-  const pathArr = path.split('src')[1].split('\\')
-  return pinyin(pathArr[1], pinyinConfig).join('') + '_' + pinyin(pathArr[2], pinyinConfig).join('')
-}
