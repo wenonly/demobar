@@ -15,7 +15,7 @@ module.exports = {
   output: {
     filename: "[name]/[name].js",
     path: __dirname + "/dist",
-    // publicPath: '/',
+    publicPath: '/',
   },
   devServer: {
     port: "9000", //默认是8080
@@ -69,8 +69,8 @@ module.exports = {
             options: {
               limit: 10, //10K
               esModule: false,
-              name: "/img/[name]_[hash:6].[ext]",
-              // outputPath: '/assets/img'
+              name: "[name]_[hash:6].[ext]",
+              outputPath: 'static/img'
             },
           },
         ],
@@ -113,15 +113,15 @@ module.exports = {
       },
       chunks: ["index"],
     }),
-    ...Object.keys(entries).map((name) => {
-      return new CopyWebpackPlugin([
-        {
-          from: "src/" + name + "/static/*",
-          to: path.resolve(__dirname, "dist", name, "static"),
-          flatten: true,
-        },
-      ]);
-    }),
+    // ...Object.keys(entries).map((name) => {
+    //   return new CopyWebpackPlugin([
+    //     {
+    //       from: "src/" + name + "/static/*",
+    //       to: path.resolve(__dirname, "dist", name, "static"),
+    //       flatten: true,
+    //     },
+    //   ]);
+    // }),
     new CopyWebpackPlugin([
       {
         from: "template/public",
