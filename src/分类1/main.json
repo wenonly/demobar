@@ -1,0 +1,12 @@
+{
+  "main": [
+    {
+      "title": "这是demo1",
+      "src": "./demo1"
+    },
+    {
+      "title": "这是demo2",
+      "src": "./demo2"
+    }
+  ]
+}

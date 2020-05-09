@@ -5,7 +5,11 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const glob = require("glob");
 const path = require("path");
 
-const entries = getEntries("src/**/index.js");
+const entries = getEntries("src/*/main.json");
+for (let name in entries) {
+  console.log(require(entries[name]))
+}
+console.log(entries)
 const mode = process.env.NODE_ENV || "development";
 
 module.exports = {
