@@ -8,7 +8,7 @@
 <body>
   <ul>
     <% for (var name in pagesConfig) {
-      %><ul><%
+      %><ul><span><%= name %></span><%
       for (var page of pagesConfig[name].pages) {
         %>
         <li><a href="<%= page.path %>"><%= page.title %></a></li>
