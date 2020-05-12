@@ -19,11 +19,13 @@ function getEntries(globPath) {
 // 根据路径生成文件名
 function getName(path) {
   const pathArr = path.split("src")[1].split("\\");
-  return (
+  let pathName = (
     pinyin(pathArr[1], pinyinConfig).join("") +
     "_" +
     pinyin(pathArr[2], pinyinConfig).join("")
   );
+  pathName = pathName.replace(/ /g, '_')
+  return pathName
 }
 
 // 获取每一页的配置信息

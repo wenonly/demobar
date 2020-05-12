@@ -18,7 +18,4 @@ webpack 4.43.0
 - clean-webpack-plugin 每次打包前清空dist目录
 - copy-webpack-plugin copy静态文件目录
 - underscore-template-loader 处理ejs文件中的引入
-
-
-
 - webpack-bundle-analyzer 可以看到项目各模块的大小，可以按需优化
