@@ -1,1 +1,2 @@
-import './static/main.css'
+import './static/main.less'
+import './static/icon/iconfont.css'

@@ -25,11 +25,16 @@
       <nav>
         <div class="list-group">
           <% for (var name in pagesConfig) { %>
-            <div class="list-header"><%= name %></div>
-            <div class="list-content">
-              <% for (var page of pagesConfig[name].pages) { %>
-              <a href="<%= page.path %>" class="list-item"><%= page.title %></a>
-              <% } %>
+            <div class="list-group-wrap">
+              <div class="list-header list-block">
+                <span><%= name %></span>
+                <span class="iwowenf iwo-weibiaoti35" aria-hidden="true"></span>
+              </div>
+              <div class="list-content">
+                <% for (var page of pagesConfig[name].pages) { %>
+                <a href="<%= page.path %>" class="list-item list-block"><%= page.title %></a>
+                <% } %>
+              </div>
             </div>
           <% } %>
         </div>

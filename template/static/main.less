@@ -1,0 +1,42 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html,body,.app{
+  width: 100%;
+  height: 100%;
+  font-family: Roboto,sans-serif;
+}
+
+.app .left{
+  height: 100%;
+  overflow: hidden;
+  width: 300px;
+  border-right: thin solid rgba(0,0,0,.12);
+  .title{
+    text-align: center;
+    line-height: 60px;
+  }
+  .search{
+    padding: 10px;
+  }
+  .list-block{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin-bottom: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  .list-block:hover{
+    background-color: rgba(0,0,0,.02);
+  }
+  .list-header > span:nth-child(2){
+    margin-left: auto;
+  }
+}
