@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const path = require("path");
 const {getEntries, getName, getPageConfigs} = require("./utils")
@@ -107,12 +107,12 @@ module.exports = {
       },
       chunks: ["index"],
     }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: "template/static",
-    //     to: path.resolve(__dirname, "../dist", "static"),
-    //     flatten: false,
-    //   },
-    // ]),
+    new CopyWebpackPlugin([
+      {
+        from: "template/public/",
+        to: "../dist",
+        flatten: false,
+      },
+    ]),
   ],
 };
