@@ -37,6 +37,7 @@ function getPageConfigs(entrieConfigs) {
     const config = require(entrieConfigs[key]);
     pagesConfig[key] = {};
     pagesConfig[key].pages = [];
+    pagesConfig[key].name = pinyin(key, pinyinConfig).join("");
 
     const paths = config.path;
     for (let pathNode of paths) {
@@ -47,6 +48,7 @@ function getPageConfigs(entrieConfigs) {
         Object.assign(pathNode, {
           path: "/" + name,
           type: key,
+          name,
         })
       );
     }

@@ -10,6 +10,7 @@ const { pagesConfig, entries } = getPageConfigs(entrieConfigs)
 const themeEntries = { index: path.resolve(__dirname, '../template/main.js') }
 for (let key in pagesConfig) {
   for (let page of pagesConfig[key].pages) {
+    console.log(page)
     console.log(page.type, page.title, page.path)
   }
 }

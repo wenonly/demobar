@@ -13,11 +13,21 @@ html,body,.app{
 .app > .left{
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   width: 300px;
   border-right: thin solid rgba(0,0,0,.12);
+  #menu{
+    flex: 1;
+    overflow-y: auto;
+  }
   .title{
     text-align: center;
     line-height: 60px;
+    &:hover{
+      color: #1867c0;
+      cursor: pointer;
+    }
   }
   .search{
     padding: 10px;
@@ -37,8 +47,34 @@ html,body,.app{
   .list-block:hover{
     background-color: rgba(0,0,0,.02);
   }
+  .list-header {
+    font-weight: 600;
+  }
   .list-header > span:nth-child(2){
     margin-left: auto;
+    transition: all 0.1s;
+  }
+  .list-content{
+    display: none;
+  }
+  .list-content > a{
+    padding-left: 20px;
+    user-select:none;
+    transition: all 0.1s;
+    &:hover{
+      padding-left: 25px;
+    }
+  }
+  .list-header-active, .list-item-active {
+    color: #1867c0;
+  }
+  .list-item-active {
+    background-color: rgba(179,212,252, 0.3);
+    font-weight: 500;
+    &:hover{
+      font-weight: 500;
+      background-color: rgba(179,212,252, 0.3);
+    }
   }
 }
 .app > .right{
