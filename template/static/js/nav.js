@@ -3,6 +3,9 @@ export function setToggleEvent() {
   $('#menu .list-header').click((ev) => {
     const listContent = ev.currentTarget.parentNode.children[1]
     const status = $(listContent).css('display')
+    // 其他的先复原
+    // $('#menu .list-content').slideUp(100)
+    // $('#menu .list-header .iwowenf').css({transform: 'rotate(0deg)'})
     // 旋转箭头
     const arrow = ev.currentTarget.children[1]
     if (status === 'none') {
