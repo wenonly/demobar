@@ -1,6 +1,6 @@
 # demobar
 
-用webpack构建方便编写demo的多页面模板
+使用webpack构建方便编写demo的多页面框架，适合开发者编写demo页面，提供分类预览的功能。
 
 # 使用方法
 
@@ -33,7 +33,7 @@ yarn 1.22.4
 node v10.16.0
 webpack 4.43.0
 
-# 封装内容
+# webpack封装内容
 
 - babel-loader 将JS转义为低版本
 - html-webpack-plugin 在浏览器中查看页面，打包html
