@@ -1,3 +1,10 @@
+@backgroundColor: #1d1e23;
+@navItemDefaultColor: hsla(0,0%,100%,.7);
+@navItemActiveColor: #fff;
+@navItemActiveBackGround: rgba(179,212,252, 0.3);
+@navItemHoverBackGround: #1d1e23;
+@titleBackground: -webkit-linear-gradient(left top,#f6ca9d,#eb9743,#000);
+
 *{
   margin: 0;
   padding: 0;
@@ -17,7 +24,7 @@ html,body,.app{
   flex-direction: column;
   width: 300px;
   // border-right: thin solid rgba(0,0,0,.12);
-  background-color: #1d1e23;
+  background-color: @backgroundColor;
   #menu{
     flex: 1;
     overflow-y: auto;
@@ -26,13 +33,9 @@ html,body,.app{
     text-align: center;
     line-height: 60px;
     // color: #f6ca9d;
-    background-image:-webkit-linear-gradient(left top,#f6ca9d,#eb9743,#000); 
-    background-clip:text; 
+    background-image: @titleBackground; 
+    background-clip:text;
     -webkit-text-fill-color:transparent;
-    &:hover{
-      color: #f6ca9d;
-      cursor: pointer;
-    }
   }
   .search{
     padding: 10px;
@@ -47,38 +50,45 @@ html,body,.app{
     margin-bottom: 1px;
     cursor: pointer;
     text-decoration: none;
-    color: hsla(0,0%,100%,.7);
-  }
-  .list-block:hover{
-    background-color: rgba(0,0,0,.02);
+    color: @navItemDefaultColor;
+    &:hover{
+      background-color: @navItemHoverBackGround;
+    }
   }
   .list-header {
     font-weight: 600;
-  }
-  .list-header > span:nth-child(2){
-    margin-left: auto;
-    transition: all 0.1s;
+    & > span:nth-child(1){
+      transition: all 0.1s;
+    }
+    & > span:nth-child(2){
+      margin-left: auto;
+      transition: all 0.1s;
+    }
+    &:hover{
+      color: @navItemActiveColor;
+    }
   }
   .list-content{
     display: none;
-  }
-  .list-content > a{
-    padding-left: 20px;
-    user-select:none;
-    transition: all 0.1s;
-    &:hover{
-      padding-left: 25px;
+    a {
+      padding-left: 20px;
+      user-select:none;
+      transition: all 0.1s;
+      &:hover{
+        padding-left: 25px;
+        color: @navItemActiveColor;
+      }
     }
   }
   .list-header-active, .list-item-active {
-    color: #fff;
+    color: @navItemActiveColor;
   }
   .list-item-active {
-    background-color: rgba(179,212,252, 0.3);
+    background-color: @navItemActiveBackGround;
     font-weight: 500;
     &:hover{
       font-weight: 500;
-      background-color: rgba(179,212,252, 0.3);
+      background-color: @navItemActiveBackGround;
     }
   }
 }
