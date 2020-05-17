@@ -16,7 +16,8 @@ html,body,.app{
   display: flex;
   flex-direction: column;
   width: 300px;
-  border-right: thin solid rgba(0,0,0,.12);
+  // border-right: thin solid rgba(0,0,0,.12);
+  background-color: #1d1e23;
   #menu{
     flex: 1;
     overflow-y: auto;
@@ -24,8 +25,12 @@ html,body,.app{
   .title{
     text-align: center;
     line-height: 60px;
+    // color: #f6ca9d;
+    background-image:-webkit-linear-gradient(left top,#f6ca9d,#eb9743,#000); 
+    background-clip:text; 
+    -webkit-text-fill-color:transparent;
     &:hover{
-      color: #1867c0;
+      color: #f6ca9d;
       cursor: pointer;
     }
   }
@@ -42,7 +47,7 @@ html,body,.app{
     margin-bottom: 1px;
     cursor: pointer;
     text-decoration: none;
-    color: black;
+    color: hsla(0,0%,100%,.7);
   }
   .list-block:hover{
     background-color: rgba(0,0,0,.02);
@@ -66,7 +71,7 @@ html,body,.app{
     }
   }
   .list-header-active, .list-item-active {
-    color: #1867c0;
+    color: #fff;
   }
   .list-item-active {
     background-color: rgba(179,212,252, 0.3);

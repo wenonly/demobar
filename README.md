@@ -19,3 +19,4 @@ webpack 4.43.0
 - copy-webpack-plugin copy静态文件目录
 - underscore-template-loader 处理ejs文件中的引入
 - webpack-bundle-analyzer 可以看到项目各模块的大小，可以按需优化
+- open-browser-webpack-plugin 自动打开浏览器

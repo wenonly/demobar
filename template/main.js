@@ -1,6 +1,7 @@
 import './static/css/main.less'
 import './static/css/scroll.less'
 import './static/icon/iconfont.css'
+import './static/js/iframeLoading'
 import { pageChange, setNavItemClickEvent } from './static/js/page'
 import { setToggleEvent, setNavActive } from './static/js/nav'
 

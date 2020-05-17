@@ -8,12 +8,12 @@ const {getEntries, getName, getPageConfigs} = require("./utils")
 const entrieConfigs = getEntries("src/*/config.json");
 const { pagesConfig, entries } = getPageConfigs(entrieConfigs)
 const themeEntries = { index: path.resolve(__dirname, '../template/main.js') }
-for (let key in pagesConfig) {
-  for (let page of pagesConfig[key].pages) {
-    console.log(page)
-    console.log(page.type, page.title, page.path)
-  }
-}
+// for (let key in pagesConfig) {
+//   for (let page of pagesConfig[key].pages) {
+//     console.log(page)
+//     console.log(page.type, page.title, page.path)
+//   }
+// }
 
 const mode = process.env.NODE_ENV || "development";
 

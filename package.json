@@ -20,6 +20,7 @@
     "html-withimg-loader": "^0.1.16",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
+    "open-browser-webpack-plugin": "^0.0.5",
     "pinyin": "^2.9.1",
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.2.0",
