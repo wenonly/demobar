@@ -2,6 +2,31 @@
 
 用webpack构建方便编写demo的多页面模板
 
+# 使用方法
+
+1. 每一个demo必须有一个分类，只需要在src中创建分类目录
+2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`
+3. 在分类目录中创建`config.json`，里面包含当前分类中demo的配置信息，比如标题和路径
+```
+// config.json 格式如下
+{
+  "path": [
+    {
+      "title": "动画按钮",
+      "src": "./动画按钮"
+    },
+    {
+      "title": "文字撕裂效果",
+      "src": "./文字撕裂效果"
+    },
+    {
+      "title": "canvas粒子泡泡",
+      "src": "./canvas粒子泡泡"
+    }
+  ]
+}
+```
+
 # version
 
 yarn 1.22.4
