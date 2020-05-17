@@ -1,7 +1,10 @@
+import nProgress from 'nprogress';
+
 // * 监听hash变化，设置内嵌页面
 export function pageChange() {
   const pathName = window.location.hash.substr(1)
   if (pathName && pathName.length > 1) {
+    nProgress.start()
     setIframeSrc(pathName);
     return pathName
   }

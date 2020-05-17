@@ -2,9 +2,10 @@ import './static/css/main.less'
 import './static/css/scroll.less'
 import './static/icon/iconfont.css'
 import './static/js/iframeLoading'
+import './static/css/nprogress.css'
 import { pageChange, setNavItemClickEvent } from './static/js/page'
 import { setToggleEvent, setNavActive } from './static/js/nav'
-
+import { setIframeLoadingEvent } from './static/js/iframeLoading'
 
 window.onhashchange = () => {
   // 设置nav活跃效果
@@ -18,6 +19,8 @@ $(document).ready(function() {
   setNavItemClickEvent()
   // 设置目录的展开收起
   setToggleEvent()
+  // 设置iframe loading监听
+  setIframeLoadingEvent()
 })
 
 // * 设置nav活跃效果
