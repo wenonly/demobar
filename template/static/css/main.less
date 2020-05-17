@@ -6,6 +6,11 @@
   @navItemHoverBackGround: #1d1e23;
   @titleBackground: -webkit-linear-gradient(left top,#f6ca9d,#eb9743,#000);
 }
+.ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .theme1();
 
 *{
@@ -62,6 +67,8 @@ html,body,.app{
     font-weight: 600;
     & > span:nth-child(1){
       transition: all 0.1s;
+      display: inline-block;
+      .ellipsis()
     }
     & > span:nth-child(2){
       margin-left: auto;
@@ -74,6 +81,8 @@ html,body,.app{
   .list-content{
     display: none;
     a {
+      .ellipsis();
+      display: block;
       padding-left: 20px;
       user-select:none;
       transition: all 0.1s;
