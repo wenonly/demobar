@@ -15,6 +15,7 @@ const webpackConfigDev = {
     ],
     devServer: {
       port: port, //默认是8080
+      host: '0.0.0.0',
       quiet: false, //默认不启用
       inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
       stats: "errors-only", //终端仅打印 error
