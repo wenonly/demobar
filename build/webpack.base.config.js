@@ -22,7 +22,7 @@ module.exports = {
   entry: Object.assign({}, entries, themeEntries),
   output: {
     filename: "[name]/[name].js",
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../docs'),
     publicPath: '/',
   },
   module: {
