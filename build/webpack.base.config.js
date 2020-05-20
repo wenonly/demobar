@@ -20,11 +20,11 @@ const mode = process.env.NODE_ENV || "development";
 module.exports = {
   mode: mode,
   entry: Object.assign({}, entries, themeEntries),
-  output: {
-    filename: "[name]/[name].js",
-    path: path.join(__dirname, '../docs'),
-    publicPath: '',
-  },
+  // output: {
+  //   filename: "[name]/[name].js",
+  //   path: path.join(__dirname, '../docs'),
+  //   publicPath: '',
+  // },
   module: {
     rules: [
       {
