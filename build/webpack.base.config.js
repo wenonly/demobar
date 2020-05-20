@@ -110,7 +110,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: "template/public/",
-        to: "../dist",
+        to: "../docs",
         flatten: false,
       },
     ]),

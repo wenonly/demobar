@@ -2,6 +2,8 @@
 
 使用webpack构建方便编写demo的多页面框架，适合开发者编写demo页面，提供分类预览的功能。
 
+地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
+
 # 使用方法
 
 1. 每一个demo必须有一个分类，只需要在src中创建分类目录
