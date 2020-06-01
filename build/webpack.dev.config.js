@@ -5,10 +5,9 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 const port = 9000
- 
 const webpackConfigDev = {
     devtool: 'cheap-module-eval-source-map',
-    mode: 'development',
+    mode: process.env.NODE_ENV,
     plugins:[
         // new BundleAnalyzerPlugin()
         new OpenBrowserPlugin({ url: `http://localhost:${port}` })

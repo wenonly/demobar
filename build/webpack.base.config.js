@@ -109,6 +109,7 @@ module.exports = {
       title: "DEMOBAR",
       templateParameters: {
         pagesConfig: pagesConfig,
+        publicPath: process.env.PUBLICPATH
       },
       chunks: ["index"],
     }),
