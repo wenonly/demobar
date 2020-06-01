@@ -30,5 +30,5 @@ export function setNavItemClickEvent() {
 function setIframeSrc(pathName) {
   if (pathName.length === 1) return
   const path = pathName.slice(-1) !== '/' ? pathName + '/' : pathName
-  $('#iframe-box').attr('src', (publicPath + path).replace('//', '/'));
+  $('#iframe-box').attr('src', publicPath.slice(0, -1) + path);
 }

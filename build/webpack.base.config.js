@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let dotenv = require('dotenv');
 const path = require("path");
@@ -40,7 +41,7 @@ module.exports = {
       {
         test: /\.(le|c)ss$/,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "postcss-loader",
@@ -87,6 +88,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name]/[name].css',
+      chunkFilename: '[name]/[id].css'
+    }),
     ...Object.keys(entries).map((name) => {
       return new HtmlWebpackPlugin({
         template: entries[name].slice(0, -8) + "index.html",
