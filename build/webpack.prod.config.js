@@ -2,13 +2,9 @@ const webpackConfigBase = require("./webpack.base.config");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const merge = require("webpack-merge");
 const path = require("path")
+console.log(process.env.PUBLICPATH, '---+++++++++++++++==')
 const webpackConfigProd = {
     mode: "production",
-    output: {
-      filename: "[name]/[name].js",
-      path: path.join(__dirname, '../docs'),
-      publicPath: '',
-    },
     plugins:[
       new CleanWebpackPlugin(),
     ]

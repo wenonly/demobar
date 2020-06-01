@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+let dotenv = require('dotenv');
 const path = require("path");
 const {getEntries, getName, getPageConfigs} = require("./utils")
 
@@ -14,17 +15,21 @@ const themeEntries = { index: path.resolve(__dirname, '../template/main.js') }
 //     console.log(page.type, page.title, page.path)
 //   }
 // }
-
 const mode = process.env.NODE_ENV || "development";
+if (mode === 'development') {
+  dotenv.config({path: path.resolve(__dirname, '../.env.development')})
+} else {
+  dotenv.config({path: path.resolve(__dirname, '../.env.production')})
+}
 
 module.exports = {
   mode: mode,
   entry: Object.assign({}, entries, themeEntries),
-  // output: {
-  //   filename: "[name]/[name].js",
-  //   path: path.join(__dirname, '../docs'),
-  //   publicPath: '',
-  // },
+  output: {
+    filename: "[name]/[name].js",
+    path: path.join(__dirname, '../docs'),
+    publicPath: process.env.PUBLICPATH,
+  },
   module: {
     rules: [
       {

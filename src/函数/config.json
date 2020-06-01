@@ -3,6 +3,10 @@
     {
       "title": "bind",
       "src": "./bind"
+    },
+    {
+      "title": "apply",
+      "src": "./apply"
     }
   ]
 }

@@ -9,11 +9,6 @@ const port = 9000
 const webpackConfigDev = {
     devtool: 'cheap-module-eval-source-map',
     mode: 'development',
-    output: {
-      filename: "[name]/[name].js",
-      path: path.join(__dirname, '../docs'),
-      publicPath: '/',
-    },
     plugins:[
         // new BundleAnalyzerPlugin()
         new OpenBrowserPlugin({ url: `http://localhost:${port}` })
