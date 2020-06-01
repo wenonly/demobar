@@ -78,8 +78,11 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /.html$/,
-        use: ["html-withimg-loader"],
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          attributes: true,
+        },
       },
       {
         test: /\.ejs$/,
