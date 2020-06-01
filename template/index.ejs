@@ -37,7 +37,7 @@
               </div>
               <div class="list-content">
                 <% for (var page of pagesConfig[name].pages) { %>
-                <a href="<%= publicPath %><%= page.name %>" class="list-item list-block <%= page.name %>"><%= page.title %></a>
+                <a href="<%= publicPath %><%= page.name %>" data-path="<%= page.path %>" class="list-item list-block <%= page.name %>"><%= page.title %></a>
                 <% } %>
               </div>
             </div>
@@ -51,6 +51,7 @@
   </div>
   <script>
     var pagesConfig = JSON.parse('<%= JSON.stringify(pagesConfig) %>')
+    var publicPath = '<%= publicPath %>'
   </script>
   <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>

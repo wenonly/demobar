@@ -12,7 +12,7 @@ export function pageChange() {
     // 初始化页面后默认加载第一个页面
     const aList = $(".list-content a")
     if (aList && aList.length) {
-      const hashpath = aList[0].getAttribute("href")
+      const hashpath = aList[0].getAttribute("data-path")
       window.location.hash = hashpath
     }
   }
@@ -20,7 +20,7 @@ export function pageChange() {
 
 export function setNavItemClickEvent() {
   $(".list-content a").click(function(e){
-    const pathName = $(this).attr("href")
+    const pathName = $(this).attr("data-path")
     window.location.hash = pathName
     e.preventDefault();
   });
@@ -30,5 +30,5 @@ export function setNavItemClickEvent() {
 function setIframeSrc(pathName) {
   if (pathName.length === 1) return
   const path = pathName.slice(-1) !== '/' ? pathName + '/' : pathName
-  $('#iframe-box').attr('src', path);
+  $('#iframe-box').attr('src', (publicPath + path).replace('//', '/'));
 }
