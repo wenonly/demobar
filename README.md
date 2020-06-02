@@ -32,9 +32,9 @@
 
 # version
 
-yarn 1.22.4
-node v10.16.0
-webpack 4.43.0
+- yarn 1.22.4
+- node v10.16.0
+- webpack 4.43.0
 
 # webpack封装内容
 

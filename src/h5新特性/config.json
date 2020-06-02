@@ -1,12 +1,12 @@
 {
   "path": [
     {
-      "title": "拖放",
-      "src": "./拖放"
-    },
-    {
       "title": "picture标签",
       "src": "./picture标签"
+    },
+    {
+      "title": "拖放",
+      "src": "./拖放"
     }
   ]
 }
