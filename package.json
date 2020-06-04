@@ -36,7 +36,7 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js"
   },
   "dependencies": {
