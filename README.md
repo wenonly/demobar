@@ -9,7 +9,8 @@
 1. 每一个demo必须有一个分类，只需要在src中创建分类目录
 2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`
 3. 在分类目录中创建`config.json`，里面包含当前分类中demo的配置信息，比如标题和路径
-```
+
+```bash
 // config.json 格式如下
 {
   "path": [
@@ -28,6 +29,7 @@
   ]
 }
 ```
+
 4. 打包的时候需要配置根目录下`.env.production`文件的`PUBLICPATH`为静态文件根路径。比如当前`demobar`项目放在`https://iwowen.github.io/demobar/`域名路径下，那么`PUBLICPATH`可以设置为`/demobar/`或者`https://iwowen.github.io/demobar/`
 
 # version
