@@ -26,6 +26,10 @@ export function setNavItemClickEvent() {
   });
 }
 
+export function clearPath() {
+  window.location.hash = ''
+}
+
 // * 设置iframe标签src
 function setIframeSrc(pathName) {
   if (pathName.length === 1) return

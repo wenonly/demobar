@@ -1,10 +1,11 @@
 .theme1 {
-  @backgroundColor: #1d1e23;
+  @backgroundColor: #566d97;
   @navItemDefaultColor: hsla(0,0%,100%,.7);
   @navItemActiveColor: #fff;
   @navItemActiveBackGround: rgba(179,212,252, 0.3);
-  @navItemHoverBackGround: #1d1e23;
-  @titleBackground: -webkit-linear-gradient(left top,#f6ca9d,#eb9743,#000);
+  @navItemHoverBackGround: #36445e;
+  // @titleBackground: -webkit-linear-gradient(left top,#f6ca9d,#eb9743,#000);
+  @titleBackground: white;
 }
 .ellipsis{
   overflow: hidden;
@@ -30,7 +31,7 @@ html,body,.app{
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 250px;
   // border-right: thin solid rgba(0,0,0,.12);
   background-color: @backgroundColor;
   #menu{
@@ -40,10 +41,12 @@ html,body,.app{
   .title{
     text-align: center;
     line-height: 60px;
+    font-weight: lighter;
     // color: #f6ca9d;
-    background-image: @titleBackground;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color: @titleBackground;
+    // background-image: @titleBackground;
+    // background-clip:text;
+    // -webkit-text-fill-color:transparent;
   }
   .search{
     padding: 10px;
