@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let dotenv = require('dotenv');
 const path = require("path");
 const {getEntries, getName, getPageConfigs} = require("./utils")
+const distPath = path.join(__dirname, '../dist')
 
 // 获取所有的入口configs
 const entrieConfigs = getEntries("src/*/config.json");
@@ -28,7 +29,7 @@ module.exports = {
   entry: Object.assign({}, entries, themeEntries),
   output: {
     filename: "[name]/[name].js",
-    path: path.join(__dirname, '../docs'),
+    path: distPath,
     publicPath: process.env.PUBLICPATH,
   },
   module: {
@@ -124,7 +125,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: "template/public/",
-        to: "../docs",
+        to: distPath,
         flatten: false,
       },
     ]),
