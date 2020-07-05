@@ -32,6 +32,11 @@
 
 4. 打包的时候需要配置根目录下`.env.production`文件的`PUBLICPATH`为静态文件根路径。比如当前`demobar`项目放在`https://iwowen.github.io/demobar/`域名路径下，那么`PUBLICPATH`可以设置为`/demobar/`或者`https://iwowen.github.io/demobar/`
 
+5. 打包后提交`dist`到`gh-pages`分支
+```bash
+git subtree push --prefix=dist origin gh-pages
+```
+
 # version
 
 - yarn 1.22.4
