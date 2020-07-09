@@ -4,11 +4,13 @@
 
 demo地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
 
-# 使用方法
+## 使用方法
 
-## 命令行操作方法
+### 命令行操作方法
 
 - 安装命令
+
+[![NPM](https://nodei.co/npm/@iwowen/dmcli.png)](https://nodei.co/npm/@iwowen/dmcli/)
 
 ```bash
 npm i @iwowen/dmcli -g
@@ -36,7 +38,7 @@ dm add/a <page> -t/--type <typeName>
 dm del/d <page> -t/--type <typeName>
 ```
 
-## 手动操作方法
+### 手动操作方法
 
 1. 每一个demo必须有一个分类，只需要在src中创建分类目录
 2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`
@@ -62,7 +64,7 @@ dm del/d <page> -t/--type <typeName>
 }
 ```
 
-# 打包部署
+## 打包部署
 
 - 打包的时候需要配置根目录下`.env.production`文件的`PUBLICPATH`为静态文件根路径。比如当前`demobar`项目放在`https://iwowen.github.io/demobar/`域名路径下，那么`PUBLICPATH`可以设置为`/demobar/`或者`https://iwowen.github.io/demobar/`
 
@@ -74,7 +76,7 @@ git subtree push --prefix=dist origin gh-pages
 
 - 使用git page部署`gh-pages`分支
 
-# webpack封装内容
+## webpack封装内容
 
 - babel-loader 将JS转义为低版本
 - html-webpack-plugin 在浏览器中查看页面，打包html
