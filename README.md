@@ -2,9 +2,41 @@
 
 使用webpack构建方便编写demo的多页面框架，适合开发者编写demo页面，提供分类预览的功能。
 
-地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
+demo地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
 
 # 使用方法
+
+## 命令行操作方法
+
+- 安装命令
+
+```bash
+npm i @iwowen/dmcli -g
+```
+
+- 新建项目
+
+```bash
+dm new <project>
+```
+
+- 新建页面
+
+根路径下运行命令
+
+```bash
+dm add/a <page> -t/--type <typeName>
+```
+
+- 删除页面
+
+根路径下运行命令
+
+```bash
+dm del/d <page> -t/--type <typeName>
+```
+
+## 手动操作方法
 
 1. 每一个demo必须有一个分类，只需要在src中创建分类目录
 2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`
@@ -30,18 +62,17 @@
 }
 ```
 
-4. 打包的时候需要配置根目录下`.env.production`文件的`PUBLICPATH`为静态文件根路径。比如当前`demobar`项目放在`https://iwowen.github.io/demobar/`域名路径下，那么`PUBLICPATH`可以设置为`/demobar/`或者`https://iwowen.github.io/demobar/`
+# 打包部署
 
-5. 打包后提交`dist`到`gh-pages`分支
+- 打包的时候需要配置根目录下`.env.production`文件的`PUBLICPATH`为静态文件根路径。比如当前`demobar`项目放在`https://iwowen.github.io/demobar/`域名路径下，那么`PUBLICPATH`可以设置为`/demobar/`或者`https://iwowen.github.io/demobar/`
+
+- 打包后提交`dist`到`gh-pages`分支
+
 ```bash
 git subtree push --prefix=dist origin gh-pages
 ```
 
-# version
-
-- yarn 1.22.4
-- node v10.16.0
-- webpack 4.43.0
+- 使用git page部署`gh-pages`分支
 
 # webpack封装内容
 
