@@ -1,0 +1,390 @@
+body,html{
+  width: 98%;
+  height: 98%;  
+}
+.wrap{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrap .heart{
+  width: 60px;
+  cursor: pointer;
+}
+
+.container {
+  display: inline-block;
+  vertical-align: top;
+  --bubble_time: 2s;
+  --bubble_scale: 0.5s;
+}
+
+/* 动画 */
+
+.praise_bubble {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  left: calc(50% - 50px);
+  bottom: calc(50% + 25px);
+  transform-origin: bottom;
+}
+
+.bubble img{
+  width: 50px;
+  height: 50px;
+} 
+
+/* .b1 {
+  background-image: url(../../assets/gift/heartitem1.png);
+}
+
+.b2 {
+  background-image: url(../../assets/gift/heartitem1.png);
+}
+
+.b3 {
+  background-image: url(../../assets/gift/heartitem1.png);
+}
+
+.b4 {
+  background-image: url(../../assets/gift/heartitem1.png);
+}
+
+.b5 {
+  background-image: url(../../assets/gift/heartitem1.png);
+}
+
+.b6 {
+  background-image: url(../../assets/gift/heartitem1.png);
+} */
+
+.bl1 {
+  animation: bubble_1 var(--bubble_time) linear 1 forwards,
+      bubble_big_1 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl2 {
+  animation: bubble_2 var(--bubble_time) linear 1 forwards,
+      bubble_big_2 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl3 {
+  animation: bubble_3 var(--bubble_time) linear 1 forwards,
+      bubble_big_1 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl4 {
+  animation: bubble_4 var(--bubble_time) linear 1 forwards,
+      bubble_big_2 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl5 {
+  animation: bubble_5 var(--bubble_time) linear 1 forwards,
+      bubble_big_1 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl6 {
+  animation: bubble_6 var(--bubble_time) linear 1 forwards,
+      bubble_big_3 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl7 {
+  animation: bubble_7 var(--bubble_time) linear 1 forwards,
+      bubble_big_1 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl8 {
+  animation: bubble_8 var(--bubble_time) linear 1 forwards,
+      bubble_big_3 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl9 {
+  animation: bubble_9 var(--bubble_time) linear 1 forwards,
+      bubble_big_2 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl10 {
+  animation: bubble_10 var(--bubble_time) linear 1 forwards,
+      bubble_big_1 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+.bl11 {
+  animation: bubble_11 var(--bubble_time) linear 1 forwards,
+      bubble_big_2 var(--bubble_scale) linear 1 forwards,
+      bubble_y var(--bubble_time) linear 1 forwards;
+}
+
+@keyframes bubble_11 {
+  0% {}
+
+  25% {
+      margin-left: -10px;
+  }
+
+  50% {
+      margin-left: -10px;
+  }
+
+  100% {
+      margin-left: -18px;
+  }
+}
+
+@keyframes bubble_10 {
+  0% {}
+
+  25% {
+      margin-left: -50px;
+  }
+
+  50% {
+      margin-left: -50px;
+  }
+
+  100% {
+      margin-left: -20px;
+  }
+}
+
+@keyframes bubble_9 {
+  0% {}
+
+  25% {
+      margin-left: -30px;
+  }
+
+  50% {
+      margin-left: -30px;
+  }
+
+  100% {
+      margin-left: 10px;
+  }
+}
+
+@keyframes bubble_8 {
+  0% {}
+
+  25% {
+      margin-left: 20px;
+  }
+
+  50% {
+      margin-left: 20px;
+  }
+
+  100% {
+      margin-left: 20px;
+  }
+}
+
+@keyframes bubble_7 {
+  0% {}
+
+  25% {
+      margin-left: 3px;
+  }
+
+  50% {
+      margin-left: 1px;
+  }
+
+  75% {
+      margin-left: 2px;
+  }
+
+  100% {
+      margin-left: 3px;
+  }
+}
+
+@keyframes bubble_6 {
+  0% {}
+
+  25% {
+      margin-left: -20px;
+  }
+
+  50% {
+      margin-left: -20px;
+  }
+
+  75% {
+      margin-left: -20px;
+  }
+
+  100% {
+      margin-left: -20px;
+  }
+}
+
+@keyframes bubble_5 {
+  0% {}
+
+  25% {
+      margin-left: 5px;
+  }
+
+  50% {
+      margin-left: -5px;
+  }
+
+  75% {
+      margin-left: -10px;
+  }
+
+  100% {
+      margin-left: -20px;
+  }
+}
+
+@keyframes bubble_4 {
+  0% {}
+
+  25% {
+      margin-left: -5px;
+  }
+
+  50% {
+      margin-left: -5px;
+  }
+
+  75% {
+      margin-left: 20px;
+  }
+
+  100% {
+      margin-left: 10px;
+  }
+}
+
+@keyframes bubble_3 {
+  0% {}
+
+  25% {
+      margin-left: -20px;
+  }
+
+  50% {
+      margin-left: 10px;
+  }
+
+  75% {
+      margin-left: 20px;
+  }
+
+  100% {
+      margin-left: -10px;
+  }
+}
+
+@keyframes bubble_2 {
+  0% {}
+
+  25% {
+      margin-left: 20px;
+  }
+
+  50% {
+      margin-left: 25px;
+  }
+
+  75% {
+      margin-left: 10px;
+  }
+
+  100% {
+      margin-left: 5px;
+  }
+}
+
+@keyframes bubble_1 {
+  0% {}
+
+  25% {
+      margin-left: -8px;
+  }
+
+  50% {
+      margin-left: 8px;
+  }
+
+  75% {
+      margin-left: -15px;
+  }
+
+  100% {
+      margin-left: 15px;
+  }
+}
+
+@keyframes bubble_big_1 {
+  0% {
+      transform: scale(0.3);
+  }
+
+  100% {
+      transform: scale(1.2);
+  }
+}
+
+@keyframes bubble_big_2 {
+  0% {
+      transform: scale(0.3);
+  }
+
+  100% {
+      transform: scale(0.9);
+  }
+}
+
+@keyframes bubble_big_3 {
+  0% {
+      transform: scale(0.3);
+  }
+
+  100% {
+      transform: scale(0.6);
+  }
+}
+
+@keyframes bubble_y {
+  0% {
+      margin-bottom: 0;
+  }
+
+  10% {
+      margin-bottom: 0;
+  }
+
+  75% {
+      opacity: 1;
+  }
+
+  100% {
+      margin-bottom: 200px;
+      opacity: 0;
+  }
+}
