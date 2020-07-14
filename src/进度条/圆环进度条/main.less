@@ -1,0 +1,62 @@
+:root {
+  --width: 100px;
+  --height: 100px;
+  --border-width: 5px;
+  --border-color: lightblue;
+  --border-bg-color: rgba(0, 0, 0, 0.7);
+}
+body,html{
+  width: 98%;
+  height: 98%;
+}
+.wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.circle {
+  width: var(--width);
+  height: var(--height);
+  border-radius: 50%;
+  border: var(--border-width) solid var(--border-bg-color);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.box {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  left: calc(var(--border-width) - var(--border-width) * 2);
+  top: calc(var(--border-width) - var(--border-width) * 2);
+}
+.box-hidden{
+  clip: rect(0 var(--width) var(--height) calc(var(--width) / 2));
+}
+.left {
+  width: var(--width);
+  height: var(--height);
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--border-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  clip: rect(0 calc(var(--width) / 2) var(--height) 0);
+}
+.right {
+  width: var(--width);
+  height: var(--height);
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--border-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  clip: rect(0 var(--width) var(--height) calc(var(--width) / 2));
+}
+.num{
+  margin: 0 auto;
+}
