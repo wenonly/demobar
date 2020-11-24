@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const GeneraterAssetPlugin = require("generate-asset-webpack-plugin");
 
 let dotenv = require("dotenv");
 const path = require("path");
@@ -35,6 +36,10 @@ if (mode === "development") {
 }
 
 const outPath = path.join(__dirname, "../docs");
+
+function createJson(compilation) {
+  return JSON.stringify(pagesConfig);
+}
 
 module.exports = {
   mode: mode,
@@ -138,5 +143,11 @@ module.exports = {
         flatten: false,
       },
     ]),
+    new GeneraterAssetPlugin({
+      filename: "config.json",
+      fn: (compilation, cb) => {
+        cb(null, createJson(compilation));
+      },
+    }),
   ],
 };

@@ -16,6 +16,7 @@
     "css-loader": "^3.5.3",
     "dotenv": "^8.2.0",
     "file-loader": "^6.0.0",
+    "generate-asset-webpack-plugin": "^0.3.0",
     "glob": "^7.1.6",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
