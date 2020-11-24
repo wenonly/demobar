@@ -1,8 +1,7 @@
 const pinyin = require("pinyin");
 const glob = require("glob");
 const path = require("path");
-const pinyinConfig = { style: pinyin.STYLE_NORMAL }
-
+const pinyinConfig = { style: pinyin.STYLE_NORMAL };
 
 // 获取指定路径下的入口文件
 function getEntries(globPath) {
@@ -18,20 +17,19 @@ function getEntries(globPath) {
 
 // 根据路径生成文件名
 function getName(path) {
-  const pathArr = path.split("src")[1].split("\\");
-  let pathName = (
+  const pathArr = path.split("src")[1].split(/[\/\\]/);
+  let pathName =
     pinyin(pathArr[1], pinyinConfig).join("") +
     "_" +
-    pinyin(pathArr[2], pinyinConfig).join("")
-  );
-  pathName = pathName.replace(/ /g, '_')
-  return pathName
+    pinyin(pathArr[2], pinyinConfig).join("");
+  pathName = pathName.replace(/ /g, "_");
+  return pathName;
 }
 
 // 获取每一页的配置信息
 function getPageConfigs(entrieConfigs) {
   const pagesConfig = {};
-  const entries = {}
+  const entries = {};
   for (let key in entrieConfigs) {
     // 每一个目录的配置信息，包含入口信息
     const config = require(entrieConfigs[key]);
@@ -59,5 +57,5 @@ function getPageConfigs(entrieConfigs) {
 module.exports = {
   getEntries,
   getName,
-  getPageConfigs
+  getPageConfigs,
 };
