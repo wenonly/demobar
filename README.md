@@ -13,7 +13,7 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 
 ```
 
-注：自 v1.1 版本后不再需要 config 目录。
+注：自 v1.1 版本后不再需要 `config.json` 文件。
 
 ## 打包部署
 
