@@ -34,12 +34,14 @@ if (mode === "development") {
   dotenv.config({ path: path.resolve(__dirname, "../.env.production") });
 }
 
+const outPath = path.join(__dirname, "../docs");
+
 module.exports = {
   mode: mode,
   entry: Object.assign({}, entries, themeEntries),
   output: {
     filename: "[name]/[name].js",
-    path: path.join(__dirname, "../dist"),
+    path: outPath,
     publicPath: process.env.PUBLICPATH,
   },
   module: {
@@ -132,7 +134,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: "template/public/",
-        to: "../dist",
+        to: outPath,
         flatten: false,
       },
     ]),
