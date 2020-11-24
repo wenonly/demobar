@@ -1,26 +1,37 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-let dotenv = require('dotenv');
+let dotenv = require("dotenv");
 const path = require("path");
-const {getEntries, getName, getPageConfigs} = require("./utils")
+const {
+  getEntries,
+  getName,
+  getPageConfigs,
+  getFormatEntries,
+} = require("./utils");
 
 // 获取所有的入口configs
-const entrieConfigs = getEntries("src/*/config.json");
-const { pagesConfig, entries } = getPageConfigs(entrieConfigs)
-const themeEntries = { index: path.resolve(__dirname, '../template/main.js') }
+const entrieIndexs = getEntries("src/*/*/index.js");
+// console.log(entrieIndexs);
+// 入口中文转字母
+const entries = getFormatEntries(entrieIndexs);
+// console.log(entries);
+// 获取pagesConfig
+const pagesConfig = getPageConfigs(entrieIndexs);
+// console.log(pagesConfig);
+const themeEntries = { index: path.resolve(__dirname, "../template/main.js") };
 // for (let key in pagesConfig) {
 //   for (let page of pagesConfig[key].pages) {
-//     console.log(page)
-//     console.log(page.type, page.title, page.path)
+//     console.log(page);
+//     console.log(page.type, page.title, page.path);
 //   }
 // }
 const mode = process.env.NODE_ENV || "development";
-if (mode === 'development') {
-  dotenv.config({path: path.resolve(__dirname, '../.env.development')})
+if (mode === "development") {
+  dotenv.config({ path: path.resolve(__dirname, "../.env.development") });
 } else {
-  dotenv.config({path: path.resolve(__dirname, '../.env.production')})
+  dotenv.config({ path: path.resolve(__dirname, "../.env.production") });
 }
 
 module.exports = {
@@ -28,7 +39,7 @@ module.exports = {
   entry: Object.assign({}, entries, themeEntries),
   output: {
     filename: "[name]/[name].js",
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, "../dist"),
     publicPath: process.env.PUBLICPATH,
   },
   module: {
@@ -69,7 +80,7 @@ module.exports = {
               esModule: false,
               name: "[hash:6].[ext]",
               outputPath: (url, resourcePath) => {
-                const pathName = getName(resourcePath)
+                const pathName = getName(resourcePath);
                 return `${pathName}/${url}`;
               },
             },
@@ -79,7 +90,7 @@ module.exports = {
       },
       {
         test: /\.html$/i,
-        loader: 'html-loader',
+        loader: "html-loader",
         options: {
           attributes: true,
         },
@@ -92,8 +103,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name]/[name].css',
-      chunkFilename: '[name]/[id].css'
+      filename: "[name]/[name].css",
+      chunkFilename: "[name]/[id].css",
     }),
     ...Object.keys(entries).map((name) => {
       return new HtmlWebpackPlugin({
@@ -114,7 +125,7 @@ module.exports = {
       title: "DEMOBAR",
       templateParameters: {
         pagesConfig: pagesConfig,
-        publicPath: process.env.PUBLICPATH
+        publicPath: process.env.PUBLICPATH,
       },
       chunks: ["index"],
     }),

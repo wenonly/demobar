@@ -15,47 +15,72 @@ function getEntries(globPath) {
   return entries;
 }
 
-// 根据路径生成文件名
+// 将入口的中文转拼音
+function getFormatEntries(indexs) {
+  const newIndexs = {};
+  for (let key in indexs) {
+    const newKey = getName(indexs[key]);
+    newIndexs[newKey] = path.join(__dirname, indexs[key]);
+  }
+  return newIndexs;
+}
+
+// 从path中获取父子目录
+function getFoldersInPath(path) {
+  const arr = path.split("src")[1].split(/[\/\\]/);
+  return [arr[1], arr[2]];
+}
+
+// 解析key
 function getName(path) {
-  const pathArr = path.split("src")[1].split(/[\/\\]/);
+  const pathArr = getFoldersInPath(path);
   let pathName =
-    pinyin(pathArr[1], pinyinConfig).join("") +
+    pinyin(pathArr[0], pinyinConfig).join("") +
     "_" +
-    pinyin(pathArr[2], pinyinConfig).join("");
+    pinyin(pathArr[1], pinyinConfig).join("");
   pathName = pathName.replace(/ /g, "_");
   return pathName;
 }
 
-// 获取每一页的配置信息
-function getPageConfigs(entrieConfigs) {
-  const pagesConfig = {};
-  const entries = {};
-  for (let key in entrieConfigs) {
-    // 每一个目录的配置信息，包含入口信息
-    const config = require(entrieConfigs[key]);
-    pagesConfig[key] = {};
-    pagesConfig[key].pages = [];
-    pagesConfig[key].name = pinyin(key, pinyinConfig).join("");
+// 获取模版文件需要的pageconfigs
+function getPageConfigs(indexs) {
+  const pageConfigs = {};
+  for (let key in indexs) {
+    const folders = getFoldersInPath(indexs[key]);
+    const parent = folders[0];
+    const child = folders[1];
 
-    const paths = config.path;
-    for (let pathNode of paths) {
-      const src = path.join(__dirname, "../src", key, pathNode.src, "index.js");
-      const name = getName(src);
-      entries[name] = src;
-      pagesConfig[key].pages.push(
-        Object.assign(pathNode, {
-          path: "/" + name,
-          type: key,
-          name,
-        })
-      );
-    }
+    // 配置中没有则添加
+    if (!pageConfigs[parent])
+      pageConfigs[parent] = {
+        pages: [],
+        name: pinyin(parent, pinyinConfig).join(""),
+      };
+
+    /**
+     * 动画 文字撕裂效果 /donghua_wenzisiliexiaoguo
+        {
+          title: 'canvas粒子泡泡',
+          src: './canvas粒子泡泡',
+          path: '/donghua_canvaslizipaopao',
+          type: '动画',
+          name: 'donghua_canvaslizipaopao'
+        }
+     */
+    pageConfigs[parent].pages.push({
+      title: child,
+      src: "./" + child,
+      path: "/" + getName(indexs[key]),
+      type: parent,
+      name: getName(indexs[key]),
+    });
   }
-  return { pagesConfig, entries };
+  return pageConfigs;
 }
 
 module.exports = {
   getEntries,
   getName,
   getPageConfigs,
+  getFormatEntries,
 };
