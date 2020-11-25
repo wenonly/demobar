@@ -30,6 +30,8 @@
     "style-loader": "^1.2.0",
     "underscore-template-loader": "^1.0.0",
     "url-loader": "^4.1.0",
+    "vue-loader": "^15.9.5",
+    "vue-template-compiler": "^2.6.12",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.7.0",
     "webpack-cli": "^3.3.11",
@@ -44,6 +46,7 @@
     "axios": "^0.19.2",
     "loadash": "^1.0.0",
     "nprogress": "^0.2.0",
-    "open": "6.0.0"
+    "open": "6.0.0",
+    "vue": "^2.6.12"
   }
 }

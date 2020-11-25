@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const GeneraterAssetPlugin = require("generate-asset-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 let dotenv = require("dotenv");
 const path = require("path");
@@ -106,9 +107,14 @@ module.exports = {
         test: /\.ejs$/,
         loader: "underscore-template-loader",
       },
+      {
+        test: /\.vue$/,
+        use: "vue-loader",
+      },
     ],
   },
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name]/[name].css",
       chunkFilename: "[name]/[id].css",
