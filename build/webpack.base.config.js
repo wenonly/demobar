@@ -53,7 +53,7 @@ module.exports = {
   output: {
     filename: "[name]/[name].js",
     path: outPath,
-    publicPath: process.env.PUBLICPATH,
+    publicPath: "",
   },
   module: {
     rules: [
@@ -151,7 +151,6 @@ module.exports = {
       title: "DEMOBAR",
       templateParameters: {
         pagesConfig: pagesConfig,
-        publicPath: process.env.PUBLICPATH,
       },
       chunks: ["index"],
     }),

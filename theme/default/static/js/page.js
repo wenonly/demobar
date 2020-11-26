@@ -31,7 +31,5 @@ export function clearPath() {
 
 // * 设置iframe标签src
 function setIframeSrc(pathName) {
-  if (pathName.length === 1) return;
-  const path = pathName.slice(-1) !== "/" ? pathName + "/" : pathName;
-  $("#iframe-box").attr("src", path);
+  $("#iframe-box").attr("src", pathName);
 }
