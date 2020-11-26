@@ -53,7 +53,6 @@ module.exports = {
   output: {
     filename: "[name]/[name].js",
     path: outPath,
-    publicPath: "",
   },
   module: {
     rules: [
@@ -94,7 +93,7 @@ module.exports = {
               name: "[hash:6].[ext]",
               outputPath: (url, resourcePath) => {
                 const pathName = getName(resourcePath);
-                return `${pathName}/${url}`;
+                return `/${pathName}/${url}`;
               },
             },
           },
