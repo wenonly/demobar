@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const GeneraterAssetPlugin = require("generate-asset-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const _config = require("./config");
 
 let dotenv = require("dotenv");
 const path = require("path");
@@ -22,7 +23,11 @@ const entries = getFormatEntries(entrieIndexs);
 // 获取pagesConfig
 const pagesConfig = getPageConfigs(entrieIndexs);
 // console.log(pagesConfig);
-const themeEntries = { index: path.resolve(__dirname, "../template/main.js") };
+const themeEntries = {
+  index: path.resolve(__dirname, `../theme/${_config.theme}/main.js`),
+  html: path.resolve(__dirname, `../theme/${_config.theme}/index.ejs`),
+  public: `theme/${_config.theme}/public/`,
+};
 // for (let key in pagesConfig) {
 //   for (let page of pagesConfig[key].pages) {
 //     console.log(page);
@@ -44,7 +49,7 @@ function createJson(compilation) {
 
 module.exports = {
   mode: mode,
-  entry: Object.assign({}, entries, themeEntries),
+  entry: Object.assign({}, entries, { index: themeEntries.index }),
   output: {
     filename: "[name]/[name].js",
     path: outPath,
@@ -111,7 +116,15 @@ module.exports = {
         test: /\.vue$/,
         use: "vue-loader",
       },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
     ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js", ".vue"],
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -129,7 +142,7 @@ module.exports = {
     }),
     // 生成模板页
     new HtmlWebpackPlugin({
-      template: "template/index.ejs",
+      template: themeEntries.html,
       filename: "index.html",
       minify: {
         removeAttributeQuotes: false,
@@ -144,7 +157,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: "template/public/",
+        from: themeEntries.public,
         to: outPath,
         flatten: false,
       },
