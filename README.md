@@ -17,15 +17,7 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 
 ## 打包部署
 
-- 打包的时候需要配置根目录下`.env.production`文件的`PUBLICPATH`为静态文件根路径。比如当前`demobar`项目放在`https://iwowen.github.io/demobar/`域名路径下，那么`PUBLICPATH`可以设置为`/demobar/`或者`https://iwowen.github.io/demobar/`
-
-- 打包后提交`dist`到`gh-pages`分支
-
-```bash
-git subtree push --prefix=dist origin gh-pages
-```
-
-- 使用 git page 部署`gh-pages`分支
+将打包进`docs`目录, 直接通过 gitpages 部署
 
 ## webpack 封装内容
 
