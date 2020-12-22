@@ -43,7 +43,7 @@ body {
   background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
   text-shadow: -3px -3px 0 #00e6f6, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);
-  transform: translate(-20px, 10px)
+  transform: translate(-20px, 10px);
 }
 
 .punk:hover::after {
