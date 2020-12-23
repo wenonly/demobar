@@ -10,7 +10,7 @@ var tpl = `
       </div>
       <div class="list-content">
         <% for (var page of result[name].pages) { %>
-        <a href="<%= page.name %>" data-path="<%= page.path %>" class="list-item list-block <%= page.name %>"><%= page.title %></a>
+        <a href="<%= page.name %>" data-path="<%= page.path %>" class="list-item list-block <%= page.cssName %>"><%= page.title %></a>
         <% } %>
       </div>
     </div>

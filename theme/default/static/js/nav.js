@@ -20,9 +20,9 @@ export function setToggleEvent() {
 
 // 在hashchange中使用，换nav颜色
 export function setNavActive(name) {
-  const type = name.split("_")[0];
+  const type = name.split("/")[0];
   const activeHeader = $(`.${type}`);
-  const activeItem = $(`.${name}`);
+  const activeItem = $(`.${name.replace('/', '_')}`);
 
   // 先清除所有的动态颜色
   $(".list-header-active").removeClass("list-header-active");
