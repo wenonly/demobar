@@ -5,7 +5,7 @@ const GeneraterAssetPlugin = require("generate-asset-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const _config = require("./config");
 
-let dotenv = require("dotenv");
+// let dotenv = require("dotenv");
 const path = require("path");
 const {
   getEntries,
@@ -35,11 +35,11 @@ const themeEntries = {
 //   }
 // }
 const mode = process.env.NODE_ENV || "development";
-if (mode === "development") {
-  dotenv.config({ path: path.resolve(__dirname, "../.env.development") });
-} else {
-  dotenv.config({ path: path.resolve(__dirname, "../.env.production") });
-}
+// if (mode === "development") {
+//   dotenv.config({ path: path.resolve(__dirname, "../.env.development") });
+// } else {
+//   dotenv.config({ path: path.resolve(__dirname, "../.env.production") });
+// }
 
 const outPath = path.join(__dirname, "../docs");
 
