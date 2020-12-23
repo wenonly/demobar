@@ -7,7 +7,7 @@ const pinyinConfig = { style: pinyin.STYLE_NORMAL };
 function getEntries(globPath) {
   const files = glob.sync(globPath);
   const entries = {};
-  files.forEach(function (filepath) {
+  files.forEach(function(filepath) {
     const split = filepath.split("/");
     const name = split[split.length - 2];
     entries[name] = "../" + filepath;
@@ -36,7 +36,7 @@ function getName(path) {
   const pathArr = getFoldersInPath(path);
   let pathName =
     pinyin(pathArr[0], pinyinConfig).join("") +
-    "_" +
+    "/" +
     pinyin(pathArr[1], pinyinConfig).join("");
   pathName = pathName.replace(/ /g, "_");
   return pathName;
@@ -54,25 +54,28 @@ function getPageConfigs(indexs) {
     if (!pageConfigs[parent])
       pageConfigs[parent] = {
         pages: [],
-        name: pinyin(parent, pinyinConfig).join(""),
+        name: pinyin(parent, pinyinConfig).join("")
       };
 
     /**
-     * 动画 文字撕裂效果 /donghua_wenzisiliexiaoguo
+     * 动画 文字撕裂效果 /donghua/wenzisiliexiaoguo
         {
           title: 'canvas粒子泡泡',
           src: './canvas粒子泡泡',
-          path: '/donghua_canvaslizipaopao',
+          path: '/donghua/canvaslizipaopao',
           type: '动画',
-          name: 'donghua_canvaslizipaopao'
+          name: 'donghua/canvaslizipaopao',
+          cssName: 'donghua_canvaslizipaopao'
         }
      */
+    const name = getName(indexs[key])
     pageConfigs[parent].pages.push({
       title: child,
       src: "./" + child,
-      path: "/" + getName(indexs[key]),
+      path: "/" + name,
       type: parent,
-      name: getName(indexs[key]),
+      name: name,
+      cssName: name.replace(/\//ig, '_')
     });
   }
   return pageConfigs;
@@ -82,5 +85,5 @@ module.exports = {
   getEntries,
   getName,
   getPageConfigs,
-  getFormatEntries,
+  getFormatEntries
 };
