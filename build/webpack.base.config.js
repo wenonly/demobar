@@ -87,15 +87,15 @@ module.exports = {
         use: [
           {
             loader: "url-loader",
-            options: mode === 'development'? {} : {
-              limit: 10000, //10K
-              esModule: false,
-              name: "[hash:6].[ext]",
-              outputPath: (url, resourcePath) => {
-                const pathName = getName(resourcePath);
-                return `/${pathName}/${url}`;
-              }
-            }
+            // options: mode === 'development'? {} : {
+            //   limit: 10000, //10K
+            //   esModule: false,
+            //   name: "[hash:6].[ext]",
+            //   outputPath: (url, resourcePath) => {
+            //     const pathName = getName(resourcePath);
+            //     return `/${pathName}/${url}`;
+            //   }
+            // }
           }
         ],
         exclude: /node_modules/
