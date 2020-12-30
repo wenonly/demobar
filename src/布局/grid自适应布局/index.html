@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid自适应布局</title>
+  <style>
+    .grid-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+    .grid-item {
+      border: 1px solid gray;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>可改变窗口大小查看效果</h1>
+  <div class="grid-wrap">
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+  </div>
+</body>
+</html>
