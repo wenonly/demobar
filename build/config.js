@@ -1,3 +1,4 @@
 module.exports = {
-  theme: "default"
+  theme: "default",
+  publicPath: "/demobar", // 根路径为‘’
 };
