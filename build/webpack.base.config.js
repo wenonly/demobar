@@ -91,10 +91,7 @@ module.exports = {
               limit: 10000, //10K
               esModule: false,
               name: "[hash:6].[ext]",
-              publicPath: (url, resourcePath) => {
-                const pathName = getName(resourcePath);
-                return `${_config.publicPath}/${pathName}/${url}`;
-              },
+              publicPath: (name) => name,
               outputPath: (url, resourcePath) => {
                 const pathName = getName(resourcePath);
                 return `/${pathName}/${url}`;
