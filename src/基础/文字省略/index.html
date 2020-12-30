@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>h5新特性拖放</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100vh;
+    }
+
+    .text {
+      width: 500px;
+    }
+
+    .text-1 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .text-2,.text-3 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    .text-3 {
+      -webkit-line-clamp: 3;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>单行省略</h1>
+    <div class="text text-1">
+      这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字
+      这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字
+    </div>
+  </div>
+
+  <div>
+    <h1>两行省略</h1>
+    <div class="text text-2">
+      这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字
+      这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字
+    </div>
+  </div>
+
+  <div>
+    <h1>多行省略</h1>
+    <div class="text text-3">
+      这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字
+      这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字，这是文字
+    </div>
+  </div>
+</body>
+
+</html>
