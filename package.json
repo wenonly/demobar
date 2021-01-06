@@ -46,7 +46,7 @@
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "loadash": "^1.0.0",
     "nprogress": "^0.2.0",
     "open": "6.0.0",
