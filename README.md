@@ -14,7 +14,7 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 使用模版[https://github.com/iwowen/demo-template](https://github.com/iwowen/demo-template)
   - 首先下载项目，或者`fork`中后克隆自己的项目。
   ```shell
-  git clone https://github.com/iwowen/demobar.git --recursive
+  git clone https://github.com/iwowen/demo-template.git --recursive
   ```
   - 然后初始化项目，运行
 
