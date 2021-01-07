@@ -57,6 +57,4 @@ npm run serve
 ## 截图
 
 ![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172645.jpg "demo主页")
-![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172748.jpg "src目录结构")
-![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172823.jpg "打包后目录结构")
 
