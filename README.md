@@ -5,9 +5,11 @@
 demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
 
 功能：
-- 支持热更新
+- 支持开发热更新
 - 自动生成demo菜单，方便查看
 - 打包后demo完整分割，不相互依赖，可直接使用demo路径访问，如[https://iwowen.github.io/demobar/donghua/donghuaanniu/](https://iwowen.github.io/demobar/donghua/donghuaanniu/)
+- 支持自定义主题
+- 中文路径转为拼音路径
 
 ## 使用方法
 
