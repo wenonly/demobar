@@ -4,14 +4,18 @@
 
 demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
 
+功能：
+- 支持热更新
+- 自动生成demo菜单，方便查看
+- 打包后demo完整分割，不相互依赖，可直接使用demo路径访问，如[https://iwowen.github.io/demobar/donghua/donghuaanniu/](https://iwowen.github.io/demobar/donghua/donghuaanniu/)
+
 ## 使用方法
 
 ### 方法一
-直接`clone`本项目。
+直接`clone`本项目使用。
 
 ### 方法二（推荐）
-
-使用模版[https://github.com/iwowen/demo-template](https://github.com/iwowen/demo-template)
+使用模版[https://github.com/iwowen/demo-template](https://github.com/iwowen/demo-template)，方便之后更新`demobar`，不与`demo`项目耦合
   - 首先下载项目，或者`fork`中后克隆自己的项目。
   ```shell
   git clone https://github.com/iwowen/demo-template.git --recursive
@@ -22,12 +26,11 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
   npm init
   ```
 
-### 编写demo的方法
-```
-1. 每一个demo必须有一个分类，只需要在src中创建分类目录
-2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`
-```
+## 编写demo的方法
 
+1. 每一个demo必须有一个分类，只需要在src中创建分类目录。
+2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`。
+3. 在`src`目录下开发demo，需要创建目录结构`src/{分类}/{demo名称}`。
 
 ## 打包部署
 
