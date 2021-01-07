@@ -3,10 +3,18 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const GeneraterAssetPlugin = require("generate-asset-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
-const _config = require("./config");
+const fs = require("fs");
+const path = require("path");
+
+// 判断父级是不是demobar的父项目
+const isParent = fs.existsSync(path.resolve(__dirname, "../../package.json"));
+let _config = require("./config");
+//
+if (isParent && fs.existsSync(path.resolve(__dirname, "../../config.js"))) {
+  _config = require("../../config");
+}
 
 // let dotenv = require("dotenv");
-const path = require("path");
 const {
   getEntries,
   getName,
@@ -16,32 +24,32 @@ const {
 
 // 获取所有的入口configs
 const entrieIndexs = getEntries("src/*/*/index.js");
-// console.log(entrieIndexs);
+// 获取父项目的源码，如果相同则覆盖
+const parentEntrieIndexs = getEntries("../src/*/*/index.js");
+Object.assign(entrieIndexs, parentEntrieIndexs);
 // 入口中文转字母
 const entries = getFormatEntries(entrieIndexs);
-// console.log(entries);
 // 获取pagesConfig
 const pagesConfig = getPageConfigs(entrieIndexs);
-// console.log(pagesConfig);
-const themeEntries = {
+
+// 主题入口
+let themeEntries = {
   index: path.resolve(__dirname, `../theme/${_config.theme}/main.js`),
   html: path.resolve(__dirname, `../theme/${_config.theme}/index.ejs`),
   public: `theme/${_config.theme}/public/`
 };
-// for (let key in pagesConfig) {
-//   for (let page of pagesConfig[key].pages) {
-//     console.log(page);
-//     console.log(page.type, page.title, page.path);
-//   }
-// }
-const mode = process.env.NODE_ENV || "development";
-// if (mode === "development") {
-//   dotenv.config({ path: path.resolve(__dirname, "../.env.development") });
-// } else {
-//   dotenv.config({ path: path.resolve(__dirname, "../.env.production") });
-// }
 
-const outPath = path.join(__dirname, "../docs");
+if (isParent && fs.existsSync(path.resolve(__dirname, `../../theme/${_config.theme}/main.js`))) {
+  themeEntries = {
+    index: path.resolve(__dirname, `../../theme/${_config.theme}/main.js`),
+    html: path.resolve(__dirname, `../../theme/${_config.theme}/index.ejs`),
+    public: path.resolve(__dirname, `../../theme/${_config.theme}/public/`)
+  };
+}
+
+const mode = process.env.NODE_ENV || "development";
+
+const outPath = path.join(__dirname, isParent ? "../" : "./", "../docs");
 
 function createJson(compilation) {
   return JSON.stringify(pagesConfig);
@@ -87,16 +95,19 @@ module.exports = {
         use: [
           {
             loader: "url-loader",
-            options: mode === 'development'? {} : {
-              limit: 10000, //10K
-              esModule: false,
-              name: "[hash:6].[ext]",
-              publicPath: (name) => name,
-              outputPath: (url, resourcePath) => {
-                const pathName = getName(resourcePath);
-                return `/${pathName}/${url}`;
-              }
-            }
+            options:
+              mode === "development"
+                ? {}
+                : {
+                    limit: 10000, //10K
+                    esModule: false,
+                    name: "[hash:6].[ext]",
+                    publicPath: name => name,
+                    outputPath: (url, resourcePath) => {
+                      const pathName = getName(resourcePath);
+                      return `/${pathName}/${url}`;
+                    }
+                  }
           }
         ],
         exclude: /node_modules/
