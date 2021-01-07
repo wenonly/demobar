@@ -6,18 +6,32 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 
 ## 使用方法
 
-```
+### 方法一
+直接`clone`本项目。
 
+### 方法二（推荐）
+
+使用模版[https://github.com/iwowen/demo-template](https://github.com/iwowen/demo-template)
+  - 首先下载项目，或者`fork`中后克隆自己的项目。
+  ```shell
+  git clone https://github.com/iwowen/demobar.git --recursive
+  ```
+  - 然后初始化项目，运行
+
+  ```shell
+  npm init
+  ```
+
+### 编写demo的方法
+```
 1. 每一个demo必须有一个分类，只需要在src中创建分类目录
 2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`
-
 ```
 
-注：自 v1.1 版本后不再需要 `config.json` 文件。
 
 ## 打包部署
 
-将打包进`docs`目录, 直接通过 gitpages 部署
+将打包到`docs`目录, 直接通过 `gitpages` 部署
 
 ## webpack 封装内容
 
