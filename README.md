@@ -16,15 +16,16 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 
 ### 方法二（推荐）
 使用模版[https://github.com/iwowen/demo-template](https://github.com/iwowen/demo-template)，方便之后更新`demobar`，不与`demo`项目耦合
-  - 首先下载项目，或者`fork`中后克隆自己的项目。
-  ```shell
-  git clone https://github.com/iwowen/demo-template.git --recursive
-  ```
-  - 然后初始化项目，运行
+- 首先下载项目，或者`fork`中后克隆自己的项目。
+```shell
+git clone https://github.com/iwowen/demo-template.git --recursive
+```
+- 然后初始化项目，运行
 
-  ```shell
-  npm init
-  ```
+```shell
+npm run init //不是 npm init
+npm run serve
+```
 
 ## 编写demo的方法
 
@@ -32,9 +33,10 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 2. 在分类目录中添加单个demo的目录，里面必须包含`index.js`、`index.html`。
 3. 在`src`目录下开发demo，需要创建目录结构`src/{分类}/{demo名称}`。
 
-## 打包部署
+## 打包和部署
 
-将打包到`docs`目录, 直接通过 `gitpages` 部署
+在根目录运行`npm run build`，项目将打包到`docs`目录。
+之后可以在`github`中部署`gitpage`页面。
 
 ## webpack 封装内容
 
