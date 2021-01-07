@@ -53,3 +53,10 @@ npm run serve
 - webpack-bundle-analyzer 可以看到项目各模块的大小，可以按需优化
 - open-browser-webpack-plugin 自动打开浏览器
 - mini-css-extract-plugin 分离 css
+
+## 截图
+
+![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172645.jpg "demo主页")
+![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172748.jpg "src目录结构")
+![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172823.jpg "打包后目录结构")
+
