@@ -23,10 +23,12 @@ const {
 } = require("./utils");
 
 // 获取所有的入口configs
-const entrieIndexs = getEntries("src/*/*/index.js");
-// 获取父项目的源码，如果相同则覆盖
-const parentEntrieIndexs = getEntries("../src/*/*/index.js");
-Object.assign(entrieIndexs, parentEntrieIndexs);
+let entrieIndexs = {}
+if (isParent) {
+  entrieIndexs = getEntries("../src/*/*/index.js");
+} else {
+  entrieIndexs = getEntries("src/*/*/index.js");
+}
 // 入口中文转字母
 const entries = getFormatEntries(entrieIndexs);
 // 获取pagesConfig
