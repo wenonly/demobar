@@ -57,6 +57,30 @@ function createJson(compilation) {
   return JSON.stringify(pagesConfig);
 }
 
+function getCssLoaders(importLoaders) {
+  return [
+    MiniCssExtractPlugin.loader,
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders,
+      }
+    },
+    {
+      loader: "postcss-loader",
+      options: {
+        plugins: function() {
+          return [
+            require("autoprefixer")({
+              overrideBrowserslist: [">0.25%", "not dead"]
+            })
+          ];
+        }
+      }
+    },
+  ]
+}
+
 module.exports = {
   mode: mode,
   entry: Object.assign({}, entries, { index: themeEntries.index }),
@@ -72,22 +96,14 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(le|c)ss$/,
+        test: /\.css$/,
+        use: getCssLoaders(1),
+        exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: function() {
-                return [
-                  require("autoprefixer")({
-                    overrideBrowserslist: [">0.25%", "not dead"]
-                  })
-                ];
-              }
-            }
-          },
+          ...getCssLoaders(2),
           "less-loader"
         ],
         exclude: /node_modules/
