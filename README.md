@@ -2,12 +2,12 @@
 
 使用 webpack 构建方便编写 demo 的多页面框架，适合开发者编写 demo 页面，提供分类预览的功能。
 
-demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
+demo 地址: [https://wenonly.github.io/demobar/](https://wenonly.github.io/demobar/)
 
 功能：
 - 支持开发热更新
 - 自动生成demo菜单，方便查看
-- 打包后demo完整分割，不相互依赖，可直接使用demo路径访问，如[https://iwowen.github.io/demobar/donghua/donghuaanniu/](https://iwowen.github.io/demobar/donghua/donghuaanniu/)
+- 打包后demo完整分割，不相互依赖，可直接使用demo路径访问，如[https://wenonly.github.io/demobar/donghua/donghuaanniu/](https://wenonly.github.io/demobar/donghua/donghuaanniu/)
 - 支持自定义主题
 - 中文路径转为拼音路径
 
@@ -17,10 +17,10 @@ demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demoba
 直接`clone`本项目使用。
 
 ### 方法二（推荐）
-使用模版[https://github.com/iwowen/demo-template](https://github.com/iwowen/demo-template)，方便之后更新`demobar`，不与`demo`项目耦合
+使用模版[https://github.com/wenonly/demo-template](https://github.com/wenonly/demo-template)，方便之后更新`demobar`，不与`demo`项目耦合
 - 首先下载项目，或者`fork`中后克隆自己的项目。
 ```shell
-git clone https://github.com/iwowen/demo-template.git --recursive
+git clone https://github.com/wenonly/demo-template.git --recursive
 ```
 - 然后初始化项目，运行
 
@@ -56,5 +56,5 @@ npm run serve
 
 ## 截图
 
-![demo](https://raw.githubusercontent.com/iwowen/demobar/master/screenshot/20210107172645.jpg "demo主页")
+![demo](https://raw.githubusercontent.com/wenonly/demobar/master/screenshot/20210107172645.jpg "demo主页")
 
