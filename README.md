@@ -2,7 +2,7 @@
 
 使用 webpack 构建方便编写 demo 的多页面框架，适合开发者编写 demo 页面，提供分类预览的功能。
 
-demo 地址: [https://iwowen.github.io/demobar/](https://iwowen.github.io/demobar/)
+demo 地址: [https://webonly.github.io/demobar/](https://wenonly.github.io/demobar/)
 
 ## 使用方法
 
